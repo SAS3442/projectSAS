@@ -1,7 +1,7 @@
 const express =require('express')
 const bodyParser=require('body-parser')
 
-const app=expres()
+const app=express()
 
 app.get('/',(res)=>{
     res.send("HI");
