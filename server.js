@@ -3,7 +3,7 @@ const bodyParser=require('body-parser')
 
 const app=expres()
 
-app.get('/',()=>{
+app.get('/',(res)=>{
     res.send("HI");
 })
 
