@@ -3,8 +3,10 @@ const bodyParser=require('body-parser')
 
 const app=express()
 
-app.get('/',(res)=>{
-    res.send("HI");
+app.set('view engine','ejs')
+
+app.get('/',(req,res)=>{
+    res.render("login");
 })
 
 app.listen(3000,()=>{
