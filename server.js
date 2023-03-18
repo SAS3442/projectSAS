@@ -4,10 +4,27 @@ const bodyParser=require('body-parser')
 const ejs=require('ejs')
 const {google} = require('googleapis');
 const jwt_decode = require('jwt-decode');
+const session=require('express-session')
 const mongoose=require('mongoose')
+const mongodbsession=require('connect-mongodb-session')(session)
 mongoose.connect("mongodb+srv://SAS3442:"+process.env.PROFILES_PASS+"@sas.cgtl0ii.mongodb.net/Profiles",{useNewUrlParser:true})
 
+
 const app=express()
+app.use(express.urlencoded({extended:true}))
+
+const store=new mongodbsession({
+    uri:"mongodb+srv://SAS3442:"+process.env.PROFILES_PASS+"@sas.cgtl0ii.mongodb.net/Profiles",
+    collection:"mysession"
+})
+
+app.use(session({
+    secret:"hello welcome",
+    resave:false,
+    saveUninitialized:false,
+    store:store,
+}
+))
 
 const schemaProfile=mongoose.Schema({
     username:String,
@@ -45,10 +62,21 @@ async function reqfunction(code){
     //geting the token from google auth
 }
 
+const isOauth=(req,res,next)=>{
+    if(req.session.isOauth){
+        next()
+    }
+    else{
+        res.redirect("/")
+    }
+}
 
 app.get("/",(req,res)=>{
+    if(isOauth){
+        res.redirect("/homepage")
+    }else{
     res.redirect(url) //using the auth url
-})
+}})
 
 app.get("/home", async (req,res)=>{
     //get the token from qs
@@ -65,16 +93,15 @@ app.get("/home", async (req,res)=>{
         id:1,
     })
     newUser.save()
-    //create a new session
-
-    //create access & refresh token
-
-    //set cookies
-
-    //redirect back
-    res.render("home")
+    
+    req.session.isOauth=true;
+    res.redirect("/homepage")
 })
 
+app.get("/homepage",isOauth,(req,res)=>{
+
+    res.render("home")
+})
 
 
 app.listen(3000,()=>{
