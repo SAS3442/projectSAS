@@ -3,6 +3,7 @@ const express =require('express')
 const bodyParser=require('body-parser')
 const ejs=require('ejs')
 const {google} = require('googleapis');
+const jwt_decode = require('jwt-decode');
 
 const app=express()
 
@@ -41,10 +42,10 @@ app.get("/home", async (req,res)=>{
     //get the token from qs
     const code=req.query.code.toString();
     //get the id and access token with the code
-    const [id_token,access_tocken]= await reqfunction(code);
-    console.log([id_token,access_tocken])  //values are coming for now in terms of array change this to object and change name of the fucntion
+    const tokenarr= await reqfunction(code); //values are coming for now in terms of array change this to object and change name of the fucntion
     //get users with tocken
-
+    const decoded=jwt_decode(tokenarr[0].toString()); //got the data object of the user
+    console.log(decoded);
     //upsert the token
 
     //create a new session
