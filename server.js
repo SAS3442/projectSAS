@@ -9,6 +9,8 @@ const mongoose=require('mongoose')
 const mongodbsession=require('connect-mongodb-session')(session)
 mongoose.connect("mongodb+srv://SAS3442:"+process.env.PROFILES_PASS+"@sas.cgtl0ii.mongodb.net/Profiles",{useNewUrlParser:true})
 
+const searched_string="veg feekyy"
+
 const app=express()
 app.use(express.urlencoded({extended:true}))
 app.use(express.static('public'))
@@ -33,6 +35,28 @@ const schemaProfile=mongoose.Schema({
 })
 
 const User=mongoose.model("user",schemaProfile)
+
+const schemaitems=mongoose.Schema({
+    name:String,
+    picture:String,
+    restraunt:String,
+    rating:[],
+    rating_max:Number,
+    id:Number,
+})
+
+const item=mongoose.model("item",schemaitems) // foods variety schema
+
+const schemarest=mongoose.Schema({
+    name:String,
+    picture:String,
+    rating:[],
+    rating_max:Number,
+    item_id:[],
+    id:Number,
+})
+
+const restro=mongoose.model("restro",schemarest) // foods variety schema
 
 app.set('view engine','ejs')
 
@@ -104,9 +128,97 @@ app.get("/home", async (req,res)=>{
 
 app.get("/homepage",isOauth,(req,res)=>{
 
+    const newitem=new item({           //added a new items to the food database items collection
+        name:"biryani",
+        picture:"ssssss",
+        restraunt:"d09",
+        rating:[4.3,3.4,4.5],
+        rating_max:4.5,
+        id:1,
+    })
+    newitem.save()
+
+    item.find({rating_max:{$gt:4}})
+    .then((foundItems)=>{
+       // console.log(foundItems)
+    })
+
+    const newrestro=new restro({           //added a new items to the food database items collection
+        name:"D09",
+        picture:"ssssss",
+        rating:[4.3,3.4,4.5],
+        rating_max:4.5,
+        item_id:[1],
+        id:1,
+    })
+    newrestro.save()
+
+    restro.find({rating_max:{$gt:4}})
+    .then((foundItems)=>{
+       // console.log(foundItems)
+    })
+
     res.render("home")
 })
 
+
+app.post("/wrongSearch",(req,res)=>{
+
+    res.redirect("/appropriateSearches")
+
+})
+
+app.get("/appropriateSearches",async (req,res)=>{
+
+    var items_array
+    for(let i=0;i<searched_string.length-2;i++)
+    {
+        var short_word=searched_string.substring(i,i+3)
+        console.log(short_word)
+        await item.find({name:{$regex:short_word}})
+        .then((found)=>{
+            //console.log(found)
+            items_array=found
+        })
+
+        if(items_array.length!=0)
+        {
+            break;
+        }
+    }
+    console.log(items_array)
+
+    var restro_array
+    for(let i=0;i<searched_string.length-2;i++)
+    {
+        var short_word=searched_string.substring(i,i+3)
+        console.log(short_word)
+        await restro.find({name:{$regex:short_word}})
+        .then((found)=>{
+            //console.log(found)
+            restro_array=found
+        })
+        
+        if(restro_array.length!=0)
+        {
+            break;
+        }
+    }
+
+    var final_array=[].concat(items_array,restro_array)
+
+    res.render("homepage") //shoud send found data to homepage
+})
+
+app.post("/finalselecteditem",(req,res)=>{
+    // req.body.value
+    res.redirect("/secondpage")
+})
+
+app.get("/secondpage",(req,res)=>{
+    //rating alogorithm
+    res.render("secondpage")
+})
 
 app.listen(3000,()=>{
     console.log("Server running on port 3000");

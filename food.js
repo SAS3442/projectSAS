@@ -12,6 +12,8 @@ app.use(express.urlencoded({extended:true}))
 const schemaitems=mongoose.Schema({
     name:String,
     picture:String,
+    restraunt:String,
+    rating:String,
     id:Number,
 })
 
@@ -21,6 +23,8 @@ app.get('/additem', function(req, res){
     const newitem=new item({           //added a new items to the food database items collection
         name:"biryani",
         picture:"ssssss",
+        restraunt:"d09",
+        rating:4.2,
         id:1,
     })
     newitem.save()
