@@ -15,26 +15,18 @@ const schemaitems=mongoose.Schema({
     id:Number,
 })
 
-const food=mongoose.model("item",schemaitems)
-
-function additem(){
-    const newitem=new items({           //added a new items to the food database items collection
-        username:biryani,
-        picture:ssssss,
-        id:1,
-    })
-    newitem.save()
-}
+const item=mongoose.model("item",schemaitems)
 
 app.get('/additem', function(req, res){
-    const newitem=new food({           //added a new items to the food database items collection
-        username:biryani,
-        picture:ssssss,
+    const newitem=new item({           //added a new items to the food database items collection
+        name:"biryani",
+        picture:"ssssss",
         id:1,
     })
     newitem.save()
+    res.send("dada")
 })
 
-app.listen("30001",()=>{
+app.listen(3001,()=>{
     console.log("server food started")
 })
