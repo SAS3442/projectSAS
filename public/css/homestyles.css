@@ -1,0 +1,164 @@
+body::-webkit-scrollbar{
+    display: none;
+  }
+.navbar
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 65px;
+    margin-top: 20px;
+}
+.location
+{
+    position: absolute;
+    left: 150px;
+    font-size: 23px;
+}
+.locationimg
+{
+    position: absolute;
+    left: 120px;
+   
+}
+.dashboard
+{   
+    border: 20px;
+    background-color: aqua;
+    position: absolute;
+    left: 0px;
+    height: 470px;
+    width: 250px;
+    top: 85px;
+   
+    border-bottom-right-radius: 45px;
+}
+.burger
+{
+    position: absolute;
+    left: 30px;
+}
+::-webkit-input-placeholder{
+    color: rgb(91, 94, 94);
+    padding-left: 20px;
+    font-size: 20px;
+    align-self: center  ;
+}
+
+.searchtext
+{
+    width: 680px;
+    border-radius: 52px;
+    height: 40px;
+    background-color: rgb(223, 222, 245);
+    padding-top: 5px;
+    border: none;
+    
+}
+
+.profile
+{
+    background-color: blueviolet;
+    position: absolute;
+    right: 20px;
+}
+
+.feed{
+    display: flex;
+   
+    justify-content: center;
+    align-items: center;
+    height: 450px;
+    margin-top: 30px;
+}
+.feeds
+{
+   position: absolute;
+    height: 430px;
+    width: 900px;
+    border-radius:45px;
+    
+}
+#feed1
+{ position: absolute;
+    height: 430px;
+    width: 900px;
+    border-radius:45px;
+    z-index: 4;
+}
+#feed2
+{
+
+    background-color: blueviolet;
+   
+    z-index: 2;
+}
+#feed3
+{
+    background-color: brown;
+    z-index: 3;
+}
+.dishes
+{
+   /* margin-top: 30px;
+    display: flex;
+    height: 260px;
+    
+    background-color: rgb(176, 198, 97);
+    /* align-items: center;
+    justify-content: center;
+    overflow-x: scroll; */ 
+    background-color: rgb(176, 198, 97);
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: 260px;
+    margin-top: 30px;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    cursor: pointer;
+   
+}
+
+.dishes::-webkit-scrollbar {
+    display: none;
+}
+.dish1
+{
+margin-left: 40px;
+display: flex;
+justify-content: center;
+height: 220px;
+width: 170px;
+border-radius: 10%;
+background-color: blueviolet;
+}
+.dish2
+{
+margin-left: 40px;
+height: 220px;
+width: 170px;
+border-radius: 10%;
+}
+
+.restaurants
+{
+    margin-top: 30px;
+    display: flex;
+    height: 260px;
+    align-items: center;
+    justify-content: center;
+   overflow-x: scroll;
+}
+.dishimg
+{
+    height: 150px;
+    width: 150px;
+  margin-top: 8px;
+}
+body
+{
+    margin: 0;
+}
