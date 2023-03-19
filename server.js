@@ -9,9 +9,9 @@ const mongoose=require('mongoose')
 const mongodbsession=require('connect-mongodb-session')(session)
 mongoose.connect("mongodb+srv://SAS3442:"+process.env.PROFILES_PASS+"@sas.cgtl0ii.mongodb.net/Profiles",{useNewUrlParser:true})
 
-
 const app=express()
 app.use(express.urlencoded({extended:true}))
+app.use(express.static('public'))
 
 const store=new mongodbsession({
     uri:"mongodb+srv://SAS3442:"+process.env.PROFILES_PASS+"@sas.cgtl0ii.mongodb.net/Profiles",
@@ -77,6 +77,10 @@ app.get("/",(req,res)=>{
     }else{
     res.redirect(url) //using the auth url
 }})
+
+app.get("/login",(req,res)=>{
+    res.render("login")
+})
 
 app.get("/home", async (req,res)=>{
     //get the token from qs
