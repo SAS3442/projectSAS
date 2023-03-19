@@ -72,7 +72,7 @@ const isOauth=(req,res,next)=>{
 }
 
 app.get("/",(req,res)=>{
-    if(isOauth){
+    if(req.session.isOauth){
         res.redirect("/homepage")
     }else{
     res.redirect(url) //using the auth url
