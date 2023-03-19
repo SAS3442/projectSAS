@@ -1,0 +1,114 @@
+body,html{
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.product-container{
+    margin-top: 50px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.logo{
+    background-color: aqua;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
+
+.name-container{
+    text-align: center;
+    font-size: 40px;
+    height: 70px;
+    text-align: center;
+}
+
+.box{
+    height: 150px;
+    margin: 0 580px;
+    box-shadow: 0 0 15px 4px black;
+    background-color: cornsilk;
+}
+
+.select-location{
+    border-radius: 20px;
+    padding: 5px 10px;
+}
+
+.location-select{
+    text-align: center;
+    height: auto;
+    padding: 25px 0;
+    font-size: 19px;
+}
+
+
+.google-img{
+    height: 20px;
+    width: 20px;
+    display: flex;
+}
+
+.submit-button-container{
+    text-align: center;
+    height: auto;
+    width: auto;
+    padding: 10px 0;
+}
+
+.continue{
+    padding: 5px 12px;
+    display: flex;
+    font-size: 18px;
+}
+
+.submit{
+    align-items: center;
+    justify-content: center;
+    display: inline-flex;
+    height: 35px;
+    width: 255px;
+    padding: 0 5px;
+    border-radius: 25px;
+    padding: 0 5px;
+}
+
+.connect{
+    text-align: center;
+    font-size: larger;
+    display:inline-block;
+    height: auto;
+    width: 100%;
+}
+
+.connect-types{
+    display: flex;
+    justify-content:center;
+}
+
+.footer-img{
+    display: flex;
+    height: 25px;
+    width: 25px;
+    padding: 20px 20px;
+}
+
+.foot{
+    margin-top: 115px;
+    text-align: center;
+}
+
+@media  only screen and (max-width:600px){
+    .box{
+        margin: 0 80px;
+    }
+}
+
+@media only screen and (max-width: 1450px){
+    .submit-button-container{
+        width: 100px;
+        display: inline-flex;
+        padding: 0 60px;
+    }
+}
