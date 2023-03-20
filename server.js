@@ -9,11 +9,14 @@ const mongoose=require('mongoose')
 const mongodbsession=require('connect-mongodb-session')(session)
 mongoose.connect("mongodb+srv://SAS3442:"+process.env.PROFILES_PASS+"@sas.cgtl0ii.mongodb.net/Profiles",{useNewUrlParser:true})
 
-const searched_string="veg feekyy"
-
 const app=express()
 app.use(express.urlencoded({extended:true}))
 app.use(express.static('public'))
+
+var senditems;                    //array of best items to send
+var sendrestros;                  //array of best restros to send
+var searched_string;             //variable for searched string
+var final_array=[{name:"Explore More"}];                 //array of best search results to send
 
 const store=new mongodbsession({
     uri:"mongodb+srv://SAS3442:"+process.env.PROFILES_PASS+"@sas.cgtl0ii.mongodb.net/Profiles",
@@ -42,6 +45,7 @@ const schemaitems=mongoose.Schema({
     restraunt:String,
     rating:[],
     rating_max:Number,
+    rating_max_id:Number,
     id:Number,
 })
 
@@ -52,6 +56,7 @@ const schemarest=mongoose.Schema({
     picture:String,
     rating:[],
     rating_max:Number,
+    rating_max_id:Number,
     item_id:[],
     id:Number,
 })
@@ -126,44 +131,47 @@ app.get("/home", async (req,res)=>{
     res.redirect("/homepage")
 })
 
-app.get("/homepage",isOauth,(req,res)=>{
+app.get("/homepage",isOauth,async (req,res)=>{
 
-    const newitem=new item({           //added a new items to the food database items collection
-        name:"biryani",
-        picture:"ssssss",
-        restraunt:"d09",
-        rating:[4.3,3.4,4.5],
-        rating_max:4.5,
-        id:1,
+    // const newitem=new item({           //added a new items to the food database items collection
+    //     name:"pizaa",
+    //     picture:"ssssss",
+    //     restraunt:"d09",
+    //     rating:[4.3,3.4,4.5],
+    //     rating_max:4.2,
+    //     rating_max_id:1,
+    //     id:1,
+    // })
+    // await newitem.save()
+    await item.find({rating_max:{$gt:4}})
+    .then((foundItems)=>{
+       senditems=foundItems
     })
-    newitem.save()
 
-    item.find({rating_max:{$gt:4}})
+    // const newrestro=new restro({           //added a new items to the food database items collection
+    //     name:"dominoz",
+    //     picture:"ssssss",
+    //     rating:[4.3,3.4,4.5],
+    //     rating_max:4.5,
+    //     item_id:[1],
+    //     rating_max_id:1,
+    //     id:1,
+    // })
+    // await newrestro.save()
+
+    await restro.find({rating_max:{$gt:4}})
     .then((foundItems)=>{
        // console.log(foundItems)
+       sendrestros=foundItems
     })
 
-    const newrestro=new restro({           //added a new items to the food database items collection
-        name:"D09",
-        picture:"ssssss",
-        rating:[4.3,3.4,4.5],
-        rating_max:4.5,
-        item_id:[1],
-        id:1,
-    })
-    newrestro.save()
-
-    restro.find({rating_max:{$gt:4}})
-    .then((foundItems)=>{
-       // console.log(foundItems)
-    })
-
-    res.render("home")
+    res.render("home",{ finallist:final_array,items:senditems,restros:sendrestros})
 })
 
 
 app.post("/wrongSearch",(req,res)=>{
 
+    searched_string=req.body.searched_item
     res.redirect("/appropriateSearches")
 
 })
@@ -205,9 +213,9 @@ app.get("/appropriateSearches",async (req,res)=>{
         }
     }
 
-    var final_array=[].concat(items_array,restro_array)
+    final_array=[].concat(items_array,restro_array)
 
-    res.render("homepage") //shoud send found data to homepage
+    res.render("home",{finallist:final_array,items:senditems,restros:sendrestros}) //shoud send found data to homepage
 })
 
 app.post("/finalselecteditem",(req,res)=>{

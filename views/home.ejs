@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/homestyles.css">
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
     
 </head>
@@ -25,8 +25,9 @@
         </div>
         <div class="searchbarcont">
             <div class="searchbar">
-                <form action="/" method post>
-                <input type="text" class="searchtext" placeholder="Explore restaurants and dishes">
+                <form action="/wrongSearch" method="post">
+                <input type="text" class="searchtext" placeholder=<%=finallist[0].name%> name="searched_item">
+                <button type="submit">😋</button>
                 </form>
             </div>
         </div>
@@ -45,142 +46,31 @@
     </div>
 
     <div class="dishes">
-        
+    
+        <% for(i=0;i<items.length;i++){%>
         <div class="dish" >
           <div class="dishinfo">
-            <img class="dishlogo" src="images/Swiggy_logo.svg.png">
-            <p class="dishrating">5.0 <img style="height: 10px;" src="/images/starlogo.png" ></p>
+            <img class="dishlogo" src=<%=items[i].rating_max_id%>>
+            <p class="dishrating"><%=items[i].rating_max%><img style="height: 10px;" src="/images/starlogo.png" ></p>
           </div>
-            <img class="dishimg" src="images/chillies.png" alt="">
-            <p class="dishname">Butter Panner</p>
+            <img class="dishimg" src=<%=items[i].picture%> alt="">
+            <p class="dishname"><%=items[i].name%></p>
         </div>
-        
-        <div class="dish" >
-            <div class="dishinfo">
-                <img class="dishlogo" src="images/Swiggy_logo.svg.png">
-                <p class="dishrating">5.0 <img style="height: 10px;" src="/images/starlogo.png" ></p>
-            </div>
-            <img class="dishimg" src="images/chillies.png" alt="">
-        </div>
-        
-        <div class="dish" >
-            <div class="dishinfo">
-                <img class="dishlogo" src="images/Zomato-Logo-PNG.jpg">
-                <p class="dishrating">5.0 <img style="height: 10px;" src="/images/starlogo.png" ></p>
-              </div>
-            <img class="dishimg" src="images/chillies.png" alt="">
-        </div>
-        
-        <div class="dish" >
-            <div class="dishinfo">
-                <img class="dishlogo" src="images/Zomato-Logo-PNG.jpg">
-                <p class="dishrating">5.0 <img style="height: 10px;" src="/images/starlogo.png" ></p>
-              </div>
-            <img class="dishimg" src="images/chillies.png" alt="">
-        </div>
-        
-        <div class="dish" >
-            <div class="dishinfo">
-              <img class="dishlogo" src="images/Swiggy_logo.svg.png">
-              <p class="dishrating">5.0 <img style="height: 10px;" src="/images/starlogo.png" ></p>
-            </div>
-              <img class="dishimg" src="images/chillies.png" alt="">
-              <p class="dishname">Butter Panner</p>
-          </div>
-          
-          <div class="dish" >
-              <div class="dishinfo">
-                  <img class="dishlogo" src="images/Swiggy_logo.svg.png">
-                  <p class="dishrating">5.0 <img style="height: 10px;" src="/images/starlogo.png" ></p>
-              </div>
-              <img class="dishimg" src="images/chillies.png" alt="">
-          </div>
-          
-          <div class="dish" >
-              <div class="dishinfo">
-                  <img class="dishlogo" src="images/Zomato-Logo-PNG.jpg">
-                  <p class="dishrating">5.0 <img style="height: 10px;" src="/images/starlogo.png" ></p>
-                </div>
-              <img class="dishimg" src="images/chillies.png" alt="">
-          </div>
-          
-          <div class="dish" >
-              <div class="dishinfo">
-                  <img class="dishlogo" src="images/Zomato-Logo-PNG.jpg">
-                  <p class="dishrating">5.0 <img style="height: 10px;" src="/images/starlogo.png" ></p>
-                </div>
-              <img class="dishimg" src="images/chillies.png" alt="">
-          </div>
-        
+        <%}%>
     </div>
 
     <div class="restaurants">
-
+        
+        <% for(i=0;i<restros.length;i++){%>
         <div class="restaurant" >
           <div class="restinfo">
-            <img class="restlogo" src="images/Swiggy_logo.svg.png">
-            <p class="restrating">5.0 <img style="height: 10px;" src="/images/starlogo.png" ></p>
+            <img class="restlogo" src=<%=restros[i].rating_max_id%>>
+            <p class="restrating"><%=restros[i].rating_max%><img style="height: 10px;" src="/images/starlogo.png" ></p>
           </div>
-            <img class="restimg" src="images/chillies.png" alt="">
-            <p class="restname">Butter Panner</p>
+            <img class="restimg" src="<%=restros[i].picture%>" alt="">
+            <p class="restname"><%=restros[i].name%></p>
         </div>
-        
-        <div class="restaurant" >
-            <div class="restinfo">
-                <img class="restlogo" src="images/Swiggy_logo.svg.png">
-                <p class="restrating">5.0 <img style="height: 10px;" src="/images/starlogo.png" ></p>
-            </div>
-            <img class="restimg" src="images/chillies.png" alt="">
-        </div>
-        
-        <div class="restaurant" >
-            <div class="restinfo">
-                <img class="restlogo" src="images/Zomato-Logo-PNG.jpg">
-                <p class="restrating">5.0 <img style="height: 10px;" src="/images/starlogo.png" ></p>
-              </div>
-            <img class="restimg" src="images/chillies.png" alt="">
-        </div>
-        
-        <div class="restaurant" >
-            <div class="restinfo">
-                <img class="restlogo" src="images/Zomato-Logo-PNG.jpg">
-                <p class="restrating">5.0 <img style="height: 10px;" src="/images/starlogo.png" ></p>
-              </div>
-            <img class="restimg" src="images/chillies.png" alt="">
-        </div>
-        
-        <div class="restaurant" >
-            <div class="restinfo">
-              <img class="restlogo" src="images/Swiggy_logo.svg.png">
-              <p class="restrating">5.0 <img style="height: 10px;" src="/images/starlogo.png" ></p>
-            </div>
-              <img class="restimg" src="images/chillies.png" alt="">
-              <p class="restname">Butter Panner</p>
-          </div>
-          
-          <div class="restaurant" >
-              <div class="restinfo">
-                  <img class="restlogo" src="images/Swiggy_logo.svg.png">
-                  <p class="restrating">5.0 <img style="height: 10px;" src="/images/starlogo.png" ></p>
-              </div>
-              <img class="restimg" src="images/chillies.png" alt="">
-          </div>
-          
-          <div class="restaurant" >
-              <div class="restinfo">
-                  <img class="restlogo" src="images/Zomato-Logo-PNG.jpg">
-                  <p class="restrating">5.0 <img style="height: 10px;" src="/images/starlogo.png" ></p>
-                </div>
-              <img class="restimg" src="images/chillies.png" alt="">
-          </div>
-          
-          <div class="restaurant" >
-              <div class="restinfo">
-                  <img class="restlogo" src="images/Zomato-Logo-PNG.jpg">
-                  <p class="restrating">5.0 <img style="height: 10px;" src="/images/starlogo.png" ></p>
-                </div>
-              <img class="restimg" src="images/chillies.png" alt="">
-          </div>
+        <%}%>
 
     </div>
 </body>
