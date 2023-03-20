@@ -42,6 +42,7 @@ const schemaitems=mongoose.Schema({
     restraunt:String,
     rating:[],
     rating_max:Number,
+    rating_max_id:Number,
     id:Number,
 })
 
@@ -52,6 +53,7 @@ const schemarest=mongoose.Schema({
     picture:String,
     rating:[],
     rating_max:Number,
+    rating_max_id:Number,
     item_id:[],
     id:Number,
 })
@@ -126,39 +128,43 @@ app.get("/home", async (req,res)=>{
     res.redirect("/homepage")
 })
 
-app.get("/homepage",isOauth,(req,res)=>{
+app.get("/homepage",isOauth,async (req,res)=>{
 
     const newitem=new item({           //added a new items to the food database items collection
-        name:"biryani",
+        name:"pizaa",
         picture:"ssssss",
         restraunt:"d09",
         rating:[4.3,3.4,4.5],
-        rating_max:4.5,
+        rating_max:4.2,
+        rating_max_id:1,
         id:1,
     })
-    newitem.save()
-
-    item.find({rating_max:{$gt:4}})
+    await newitem.save()
+    var senditems
+    var sendrestros
+    await item.find({rating_max:{$gt:4}})
     .then((foundItems)=>{
-       // console.log(foundItems)
+       senditems=foundItems
     })
 
     const newrestro=new restro({           //added a new items to the food database items collection
-        name:"D09",
+        name:"dominoz",
         picture:"ssssss",
         rating:[4.3,3.4,4.5],
         rating_max:4.5,
         item_id:[1],
+        rating_max_id:1,
         id:1,
     })
-    newrestro.save()
+    await newrestro.save()
 
-    restro.find({rating_max:{$gt:4}})
+    await restro.find({rating_max:{$gt:4}})
     .then((foundItems)=>{
        // console.log(foundItems)
+       sendrestros=foundItems
     })
 
-    res.render("home")
+    res.render("home",{ items:senditems,restros:sendrestros})
 })
 
 
