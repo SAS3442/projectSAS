@@ -25,8 +25,9 @@
         </div>
         <div class="searchbarcont">
             <div class="searchbar">
-                <form action="/" method post>
-                <input type="text" class="searchtext" placeholder="Explore restaurants and dishes">
+                <form action="/wrongSearch" method="post">
+                <input type="text" class="searchtext" placeholder=<%=finallist[0].name%> name="searched_item">
+                <button type="submit">😋</button>
                 </form>
             </div>
         </div>
@@ -60,10 +61,10 @@
 
     <div class="restaurants">
         
-        <% for(i=0;i<items.length;i++){%>
+        <% for(i=0;i<restros.length;i++){%>
         <div class="restaurant" >
           <div class="restinfo">
-            <img class="restlogo" src=<%=items[i].rating_max_id%>>
+            <img class="restlogo" src=<%=restros[i].rating_max_id%>>
             <p class="restrating"><%=restros[i].rating_max%><img style="height: 10px;" src="/images/starlogo.png" ></p>
           </div>
             <img class="restimg" src="<%=restros[i].picture%>" alt="">
