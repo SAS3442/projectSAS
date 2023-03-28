@@ -17,6 +17,7 @@ var senditems;                    //array of best items to send
 var sendrestros;                  //array of best restros to send
 var searched_string;             //variable for searched string
 var final_array=[{name:"Explore More"}];                 //array of best search results to send
+var decoded;                            //user decoded string object
 
 const store=new mongodbsession({
     uri:"mongodb+srv://SAS3442:"+process.env.PROFILES_PASS+"@sas.cgtl0ii.mongodb.net/Profiles",
@@ -117,7 +118,7 @@ app.get("/home", async (req,res)=>{
     //get the id and access token with the code
     const tokenarr= await reqfunction(code); //values are coming for now in terms of array change this to object and change name of the fucntion
     //get users with token
-    const decoded=jwt_decode(tokenarr[0].toString()); //got the data object of the user
+    decoded=jwt_decode(tokenarr[0].toString()); //got the data object of the user
     console.log(decoded);
     //upsert the token
     const newUser=new User({  //added a new user to the profile database users collection
@@ -165,7 +166,7 @@ app.get("/homepage",isOauth,async (req,res)=>{
        sendrestros=foundItems
     })
 
-    res.render("home",{ finallist:final_array,items:senditems,restros:sendrestros})
+    res.render("home",{ finallist:final_array,items:senditems,restros:sendrestros,username:decoded.name,picture:decoded.picture})
 })
 
 
@@ -215,7 +216,7 @@ app.get("/appropriateSearches",async (req,res)=>{
 
     final_array=[].concat(items_array,restro_array)
 
-    res.render("home",{finallist:final_array,items:senditems,restros:sendrestros}) //shoud send found data to homepage
+    res.render("home",{finallist:final_array,items:senditems,restros:sendrestros,,username:decoded.name,picture:decoded.picture}) //shoud send found data to homepage
 })
 
 app.post("/finalselecteditem",(req,res)=>{
