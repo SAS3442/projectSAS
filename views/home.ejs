@@ -14,23 +14,22 @@
         <div class="dashboard">..</div>
         <div class="burger">
             <!-- <i class="fa fa-bars" style="size: 20px;"></i> -->
-            <img src="/images/Burgrer.png" style="height: 30px;" alt="">
+            <img src="css/Burgrer.png" style="height: 30px;" alt="">
         </div>
         <div class="locationimg">
-            <img src="/images/location-56.png" style="height: 27px;" alt="">
+            <img src="css/location-56.png" style="height: 27px;" alt="">
         
         </div>    
         <div class="location">
             <p>Mysore</p>
         </div>
-        <div class="searchbarcont">
-            <div class="searchbar">
-                <form action=<%=nexturl%> method="post">
+            <div class="searchbar" >
+                <form style="display: flex" action=<%=nexturl%> method="post">
                 <input type="text" class="searchtext" placeholder=<%=finallist[0].name%> name="searched_item">
-                <button type="submit">😋</button>
+                <button class="search-icon"><img style="height: 30px;" src="css/search-icon.png" alt=""></button>
                 </form>
+                
             </div>
-        </div>
 
         <div class="profile">
             <div class="profilecontainerimage"><img src=<%=picture%> alt="not got it"></div>
