@@ -7,7 +7,7 @@ const jwt_decode = require('jwt-decode');
 const session=require('express-session')
 const mongoose=require('mongoose')
 const mongodbsession=require('connect-mongodb-session')(session)
-mongoose.connect("mongodb+srv://SAS3442:"+process.env.PROFILES_PASS+"@sas.cgtl0ii.mongodb.net/Profiles",{useNewUrlParser:true})
+mongoose.connect("mongodb+srv://"+process.env.PROFILES_USER+":"+process.env.PROFILES_PASS+"@sas.cgtl0ii.mongodb.net/Profiles",{useNewUrlParser:true})
 
 const app=express()
 app.use(express.urlencoded({extended:true}))
@@ -20,7 +20,7 @@ var final_array=[{name:"Explore More"}];                 //array of best search 
 var decoded;                            //user decoded string object
 
 const store=new mongodbsession({
-    uri:"mongodb+srv://SAS3442:"+process.env.PROFILES_PASS+"@sas.cgtl0ii.mongodb.net/Profiles",
+    uri:"mongodb+srv://"+process.env.PROFILES_USER+":"+process.env.PROFILES_PASS+"@sas.cgtl0ii.mongodb.net/Profiles",
     collection:"mysession"
 })
 
@@ -170,14 +170,14 @@ app.get("/homepage",isOauth,async (req,res)=>{
 })
 
 
-app.post("/wrongSearch",(req,res)=>{
+app.post("/wrongSearch",isOauth,(req,res)=>{
 
     searched_string=req.body.searched_item
     res.redirect("/appropriateSearches")
 
 })
 
-app.get("/appropriateSearches",async (req,res)=>{
+app.get("/appropriateSearches",isOauth,async (req,res)=>{
 
     var items_array
     for(let i=0;i<searched_string.length-2;i++)
@@ -216,17 +216,17 @@ app.get("/appropriateSearches",async (req,res)=>{
 
     final_array=[].concat(items_array,restro_array)
 
-    res.render("home",{finallist:final_array,items:senditems,restros:sendrestros,,username:decoded.name,picture:decoded.picture}) //shoud send found data to homepage
+    res.render("home",{finallist:final_array,items:senditems,restros:sendrestros,username:decoded.name,picture:decoded.picture}) //shoud send found data to homepage
 })
 
-app.post("/finalselecteditem",(req,res)=>{
+app.post("/finalselecteditem",isOauth,(req,res)=>{
     // req.body.value
     res.redirect("/secondpage")
 })
 
-app.get("/secondpage",(req,res)=>{
+app.get("/secondpage",isOauth,(req,res)=>{
     //rating alogorithm
-    res.render("secondpage")
+    res.render("comp")
 })
 
 app.listen(3000,()=>{
