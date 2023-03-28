@@ -45,7 +45,7 @@
             <img class="dishimg" src="/paneer-butter-masala-recipe-2.jpg" alt="">
         </div>
         <div >
-            <p class="dishname" style="font-size: 45px; font-family:'Times New Roman', Times, serif;margin-top: 10px;"><strong>Paneer Buttermasala</strong></p>
+            <p class="dishname" style="font-size: 45px; font-family:'Times New Roman', Times, serif;margin-top: 10px;"><strong><%=list[0].name%></strong></p>
         </div>
         <!-- <p style="margin-bottom:10px;">Categorize By</p> -->
         <div class="category">
@@ -58,109 +58,32 @@
     <!-- comparison -->
 
     <div class="comparison">
+        <% for(i=0;i<list.length;i++){%>
         <div class="fullitem">
-         
-            <div class="item-image"><img style=" height: 250px;width: 250px;border-radius: 50px;" src="/paneer-butter-masala-recipe-2.jpg" alt="item image"></div>
-            <div class="item-service-logo"><img style=" height: 65px;width: 200px;" src="/Swiggy_logo.svg.png" alt="item service"></div>
-            <div class="item-price"><p style="font-size: 3rem; margin: 0px;">₹250</p></div>
-            <div class="rest-name"><p style="font-size: 2.2rem;">Hotel Empire</p></div>
+    
+            <div class="item-image"><img style=" height: 250px;width: 250px;border-radius: 50px;"
+                    src="/paneer-butter-masala-recipe-2.jpg" alt="item image"></div>
+            <div class="item-service-logo"><img style=" height: 65px;width: 200px;" src="/Swiggy_logo.svg.png"
+                    alt="item service"></div>
+            <div class="item-price">
+                <p style="font-size: 3rem; margin: 0px;"><%=list[i].price%></p>
+            </div>
+            <div class="rest-name">
+                <p style="font-size: 2.2rem;"><%=list[i].restraunt%></p>
+            </div>
             <div class="extra-item-info">
-                <p>21 mins</p>
-                <p>4.3⭐</p>
+                <p><%=list[i].time%></p>
+                <p><%=list[i].rating%></p>
             </div>
             <div class="rest-item-name">
-                <p style="padding-left: 41px;font-size: 1.5rem;">Jain - Paneer Butter Masala</p>
+                <p style="padding-left: 41px;font-size: 1.5rem;">J<%=list[i].name%></p>
             </div>
             <div class="item-description">
-                <p style="padding-left: 41px;font-size: 1rem;">Specially Made Gravy Without Onion, Garlilc. Chef Special Jain Paneer Butter Masala</p>
+                <p style="padding-left: 41px;font-size: 1rem;"><%=list[i].description%></p>
             </div>
         </div>
-        <div class="fullitem">
-         
-            <div class="item-image"><img style=" height: 250px;width: 250px;border-radius: 50px;" src="/paneer-butter-masala-recipe-2.jpg" alt="item image"></div>
-            <div class="item-service-logo"><img style=" height: 50px;width: 200px;" src="/zomato-logo-transparent-background-11662674104vmdxh5lcfn.png" alt="item service"></div>
-            <div class="item-price"><p style="font-size: 3rem; margin: 0px;">₹260</p></div>
-            <div class="rest-name"><p style="font-size: 2.2rem;">Hotel Empire</p></div>
-            <div class="extra-item-info">
-                <p>22 mins</p>
-                <p>4.2⭐</p>
-            </div>
-            <div class="rest-item-name">
-                <p style="padding-left: 41px;font-size: 1.5rem;">Jain - Paneer Butter Masala</p>
-            </div>
-            <div class="item-description">
-                <p style="padding-left: 41px;font-size: 1rem;">Specially Made Gravy Without Onion, Garlilc. Chef Special Jain Paneer Butter Masala</p>
-            </div>
-        </div>
-
-        <div class="fullitem">
-         
-            <div class="item-image"><img style=" height: 250px;width: 250px;border-radius: 50px;" src="/paneer-butter-masala-recipe-2.jpg" alt="item image"></div>
-            <div class="item-service-logo"><img style=" height: 65px;width: 200px;" src="/Swiggy_logo.svg.png" alt="item service"></div>
-            <div class="item-price"><p style="font-size: 3rem; margin: 0px;">₹250</p></div>
-            <div class="rest-name"><p style="font-size: 2.2rem;">Hotel Empire</p></div>
-            <div class="extra-item-info">
-                <p>21 mins</p>
-                <p>4.3⭐</p>
-            </div>
-            <div class="rest-item-name">
-                <p style="padding-left: 41px;font-size: 1.5rem;">Jain - Paneer Butter Masala</p>
-            </div>
-            <div class="item-description">
-                <p style="padding-left: 41px;font-size: 1rem;">Specially Made Gravy Without Onion, Garlilc. Chef Special Jain Paneer Butter Masala</p>
-            </div>
-        </div>
-        <div class="fullitem">
-         
-            <div class="item-image"><img style=" height: 250px;width: 250px;border-radius: 50px;" src="/paneer-butter-masala-recipe-2.jpg" alt="item image"></div>
-            <div class="item-service-logo"><img style=" height: 50px;width: 200px;" src="/zomato-logo-transparent-background-11662674104vmdxh5lcfn.png" alt="item service"></div>
-            <div class="item-price"><p style="font-size: 3rem; margin: 0px;">₹260</p></div>
-            <div class="rest-name"><p style="font-size: 2.2rem;">Hotel Empire</p></div>
-            <div class="extra-item-info">
-                <p>22 mins</p>
-                <p>4.2⭐</p>
-            </div>
-            <div class="rest-item-name">
-                <p style="padding-left: 41px;font-size: 1.5rem;">Jain - Paneer Butter Masala</p>
-            </div>
-            <div class="item-description">
-                <p style="padding-left: 41px;font-size: 1rem;">Specially Made Gravy Without Onion, Garlilc. Chef Special Jain Paneer Butter Masala</p>
-            </div>
-        </div>
-        <div class="fullitem">
-         
-            <div class="item-image"><img style=" height: 250px;width: 250px;border-radius: 50px;" src="/paneer-butter-masala-recipe-2.jpg" alt="item image"></div>
-            <div class="item-service-logo"><img style=" height: 65px;width: 200px;" src="/Swiggy_logo.svg.png" alt="item service"></div>
-            <div class="item-price"><p style="font-size: 3rem; margin: 0px;">₹250</p></div>
-            <div class="rest-name"><p style="font-size: 2.2rem;">Hotel Empire</p></div>
-            <div class="extra-item-info">
-                <p>21 mins</p>
-                <p>4.3⭐</p>
-            </div>
-            <div class="rest-item-name">
-                <p style="padding-left: 41px;font-size: 1.5rem;">Jain - Paneer Butter Masala</p>
-            </div>
-            <div class="item-description">
-                <p style="padding-left: 41px;font-size: 1rem;">Specially Made Gravy Without Onion, Garlilc. Chef Special Jain Paneer Butter Masala</p>
-            </div>
-        </div>
-        <div class="fullitem">
-         
-            <div class="item-image"><img style=" height: 250px;width: 250px;border-radius: 50px;" src="/paneer-butter-masala-recipe-2.jpg" alt="item image"></div>
-            <div class="item-service-logo"><img style=" height: 50px;width: 200px;" src="/zomato-logo-transparent-background-11662674104vmdxh5lcfn.png" alt="item service"></div>
-            <div class="item-price"><p style="font-size: 3rem; margin: 0px;">₹260</p></div>
-            <div class="rest-name"><p style="font-size: 2.2rem;">Hotel Empire</p></div>
-            <div class="extra-item-info">
-                <p>22 mins</p>
-                <p>4.2⭐</p>
-            </div>
-            <div class="rest-item-name">
-                <p style="padding-left: 41px;font-size: 1.5rem;">Jain - Paneer Butter Masala</p>
-            </div>
-            <div class="item-description">
-                <p style="padding-left: 41px;font-size: 1rem;">Specially Made Gravy Without Onion, Garlilc. Chef Special Jain Paneer Butter Masala</p>
-            </div>
-        </div>
+        <%}%>
+    
     </div>
 </body>
 </html>
