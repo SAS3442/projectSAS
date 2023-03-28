@@ -166,7 +166,7 @@ app.get("/homepage",isOauth,async (req,res)=>{
        sendrestros=foundItems
     })
 
-    res.render("home",{ finallist:final_array,items:senditems,restros:sendrestros,username:decoded.name,picture:decoded.picture})
+    res.render("home",{nexturl:"/wrongSearch",finallist:final_array,items:senditems,restros:sendrestros,username:decoded.name,picture:decoded.picture})
 })
 
 
@@ -216,7 +216,7 @@ app.get("/appropriateSearches",isOauth,async (req,res)=>{
 
     final_array=[].concat(items_array,restro_array)
 
-    res.render("home",{finallist:final_array,items:senditems,restros:sendrestros,username:decoded.name,picture:decoded.picture}) //shoud send found data to homepage
+    res.render("home",{nexturl:"/finalselecteditem",finallist:final_array,items:senditems,restros:sendrestros,username:decoded.name,picture:decoded.picture}) //shoud send found data to homepage
 })
 
 app.post("/finalselecteditem",isOauth,(req,res)=>{
