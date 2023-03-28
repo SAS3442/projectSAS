@@ -26,7 +26,8 @@
         <div class="searchbarcont">
             <div class="searchbar">
                 <form action=<%=nexturl%> method="post">
-                <input type="text" class="searchtext" placeholder=<%=finallist[0].name%> name="searched_item">
+                <!-- <form action="/finalselecteditem" method="post"> -->
+                <input type="text" class="searchtext" placeholder=<%=finallist[0].name%> value=<%=finallist[0].name%> name="avi">
                 <button type="submit">😋</button>
                 </form>
             </div>

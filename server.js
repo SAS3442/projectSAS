@@ -18,6 +18,8 @@ var sendrestros;                  //array of best restros to send
 var searched_string;             //variable for searched string
 var final_array=[{name:"Explore More"}];                 //array of best search results to send
 var decoded;                            //user decoded string object
+var perfectstr;                         //name of the updated matched string item
+var perfectstr_arr=[];                  //array to store matched string item
 
 const store=new mongodbsession({
     uri:"mongodb+srv://"+process.env.PROFILES_USER+":"+process.env.PROFILES_PASS+"@sas.cgtl0ii.mongodb.net/Profiles",
@@ -87,7 +89,6 @@ async function reqfunction(code){
         setTimeout(resolve,1000);
     });
 
-    console.log(tokens);
     return [tokens.id_token,tokens.access_token];             
     //geting the token from google auth
 }
@@ -172,7 +173,7 @@ app.get("/homepage",isOauth,async (req,res)=>{
 
 app.post("/wrongSearch",isOauth,(req,res)=>{
 
-    searched_string=req.body.searched_item
+    searched_string=req.body.avi
     res.redirect("/appropriateSearches")
 
 })
@@ -183,7 +184,7 @@ app.get("/appropriateSearches",isOauth,async (req,res)=>{
     for(let i=0;i<searched_string.length-2;i++)
     {
         var short_word=searched_string.substring(i,i+3)
-        console.log(short_word)
+        // console.log(short_word)
         await item.find({name:{$regex:short_word}})
         .then((found)=>{
             //console.log(found)
@@ -195,13 +196,11 @@ app.get("/appropriateSearches",isOauth,async (req,res)=>{
             break;
         }
     }
-    console.log(items_array)
 
     var restro_array
     for(let i=0;i<searched_string.length-2;i++)
     {
         var short_word=searched_string.substring(i,i+3)
-        console.log(short_word)
         await restro.find({name:{$regex:short_word}})
         .then((found)=>{
             //console.log(found)
@@ -223,12 +222,35 @@ app.get("/appropriateSearches",isOauth,async (req,res)=>{
 })
 
 app.post("/finalselecteditem",isOauth,(req,res)=>{
-    // req.body.value
+    perfectstr=req.body.avi;
+    // console.log(req.body.avi);
     res.redirect("/secondpage")
 })
 
-app.get("/secondpage",isOauth,(req,res)=>{
+app.get("/secondpage",isOauth,async (req,res)=>{
     //rating alogorithm
+    await item.find({name:"pizza"})
+    .then((found)=>{
+        perfectstr_arr=found;
+        // console.log(perfectstr_arr);
+    })
+    //var temp=perfectstr_arr;
+    //console.log(temp);
+        console.log(perfectstr_arr[0].price);
+        function sort(){for(let i=0;i<perfectstr_arr.length-1;i++){
+        for(let j=i+1;j<perfectstr_arr.length-i;j++)
+        {
+            if(perfectstr_arr[i].price>perfectstr_arr[j].price)
+            {
+                var temp=perfectstr_arr[i];
+                perfectstr_arr[i]=perfectstr_arr[j];
+                perfectstr_arr[j]=temp;
+            }
+        }
+    }return perfectstr_arr}
+    console.log(sort())
+    //console.log(perfectstr_arr);
+    //console.log(temp);
     res.render("comp")
 })
 

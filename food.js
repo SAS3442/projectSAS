@@ -28,10 +28,10 @@ app.get('/additem', function(req, res){
     const newitem=new item({           //added a new items to the food database items collection
     name:"pizza",
     picture:'afff',
-    restraunt:"janani",
+    restraunt:"mylari",
     rating:[4.1,4.3,4.5],
-    rating_Max:4.5,
-    ratingmax_Id:2,
+    rating_max:4.5,
+    ratingmax_id:2,
     price:103,
     time:"22mins",
     description:"we serve tasty pizza must try once we serve tasty pizza must try once",
