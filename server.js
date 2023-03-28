@@ -16,10 +16,10 @@ app.use(express.static('public'))
 var senditems;                    //array of best items to send
 var sendrestros;                  //array of best restros to send
 var searched_string;             //variable for searched string
-var final_array=[{name:"Explore More"}];                 //array of best search results to send
+let final_array=[{name:"Explore More"}];                 //array of best search results to send ////wherever intializing use let
 var decoded;                            //user decoded string object
 var perfectstr;                         //name of the updated matched string item
-var perfectstr_arr=[];                  //array to store matched string item
+let perfectstr_arr=[];                  //array to store matched string item //wherever intializing use let
 
 const store=new mongodbsession({
     uri:"mongodb+srv://"+process.env.PROFILES_USER+":"+process.env.PROFILES_PASS+"@sas.cgtl0ii.mongodb.net/Profiles",
@@ -215,43 +215,38 @@ app.get("/appropriateSearches",isOauth,async (req,res)=>{
 
     final_array=[].concat(items_array,restro_array)
     if(final_array.length==0){
-        var final_array=[{name:"Explore More"}];
+        final_array=[{name:"Didn't work"}];
+        res.render("home",{nexturl:"/appropriateSearches",finallist:final_array,items:senditems,restros:sendrestros,username:req.session.userobject.name,picture:req.session.userobject.picture}) //shoud send found data to homepage
     }
-
     res.render("home",{nexturl:"/finalselecteditem",finallist:final_array,items:senditems,restros:sendrestros,username:req.session.userobject.name,picture:req.session.userobject.picture}) //shoud send found data to homepage
 })
 
 app.post("/finalselecteditem",isOauth,(req,res)=>{
-    perfectstr=req.body.avi;
-    // console.log(req.body.avi);
     res.redirect("/secondpage")
 })
 
 app.get("/secondpage",isOauth,async (req,res)=>{
-    //rating alogorithm
-    await item.find({name:"pizza"})
+    var damm;
+    await item.find({name:{$eq:final_array[0].name}})
     .then((found)=>{
-        perfectstr_arr=found;
-        // console.log(perfectstr_arr);
+        damm=found;
     })
-    //var temp=perfectstr_arr;
-    //console.log(temp);
-        console.log(perfectstr_arr[0].price);
-        function sort(){for(let i=0;i<perfectstr_arr.length-1;i++){
-        for(let j=i+1;j<perfectstr_arr.length-i;j++)
-        {
-            if(perfectstr_arr[i].price>perfectstr_arr[j].price)
+    damm=JSON.parse(JSON.stringify(damm));    //this converts objent in string format to javascript object
+
+    function sort(){
+        for(let i=0;i<damm.length-1;i++){
+            for(let j=0;j<damm.length-i-1;j++)
             {
-                var temp=perfectstr_arr[i];
-                perfectstr_arr[i]=perfectstr_arr[j];
-                perfectstr_arr[j]=temp;
+                if(damm[j].price>damm[j+1].price)
+                { 
+                    var temp=damm[j];
+                    damm[j]=damm[j+1];
+                    damm[j+1]=temp;
+                }
             }
-        }
-    }return perfectstr_arr}
-    console.log(sort())
-    //console.log(perfectstr_arr);
-    //console.log(temp);
-    res.render("comp")
+        }return damm}
+    
+    res.render("comp",{list:sort()})
 })
 
 app.listen(3000,()=>{

@@ -32,7 +32,7 @@ app.get('/additem', function(req, res){
     rating:[4.1,4.3,4.5],
     rating_max:4.5,
     ratingmax_id:2,
-    price:103,
+    price:150,
     time:"22mins",
     description:"we serve tasty pizza must try once we serve tasty pizza must try once",
     id:1,
