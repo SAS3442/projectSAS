@@ -39,7 +39,15 @@ body::-webkit-scrollbar{
     position: absolute;
     left: 30px;
 }
-::-webkit-input-placeholder{
+::-webkit-input-placeholder{  /*designing placeholder*/ 
+    color: rgb(91, 94, 94);
+    font-size: 20px;
+    align-self: center  ;
+}
+
+input
+{
+    
     color: rgb(91, 94, 94);
     padding-left: 20px;
     font-size: 20px;
@@ -54,7 +62,7 @@ body::-webkit-scrollbar{
     background-color: rgb(223, 222, 245);
     padding-top: 5px;
     border: none;
-    
+    outline: none;
 }
 .search-icon
 {
@@ -67,9 +75,16 @@ body::-webkit-scrollbar{
 
 .profile
 {
-    background-color: blueviolet;
+    /* background-color: blueviolet; */
     position: absolute;
     right: 20px;
+    display: flex;
+}
+.profile-image
+{
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
 }
 
 .feed{
