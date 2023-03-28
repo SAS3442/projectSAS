@@ -3,7 +3,7 @@ const express =require('express')
 const bodyParser=require('body-parser')
 const ejs=require('ejs')
 const mongoose=require('mongoose')
-mongoose.connect("mongodb+srv://SAS3442:"+process.env.PROFILES_PASS+"@sas.cgtl0ii.mongodb.net/Food",{useNewUrlParser:true})
+mongoose.connect("mongodb+srv://"+process.env.PROFILES_USER+":"+process.env.PROFILES_PASS+"@sas.cgtl0ii.mongodb.net/Profiles",{useNewUrlParser:true})
 
 
 const app=express()
@@ -13,7 +13,12 @@ const schemaitems=mongoose.Schema({
     name:String,
     picture:String,
     restraunt:String,
-    rating:String,
+    rating:[],
+    rating_Max:Number,
+    ratingmax_Id:Number,
+    price:Number,
+    time:String,
+    description:String,
     id:Number,
 })
 
@@ -21,11 +26,16 @@ const item=mongoose.model("item",schemaitems)
 
 app.get('/additem', function(req, res){
     const newitem=new item({           //added a new items to the food database items collection
-        name:"biryani",
-        picture:"ssssss",
-        restraunt:"d09",
-        rating:4.2,
-        id:1,
+    name:"pizza",
+    picture:'afff',
+    restraunt:"janani",
+    rating:[4.1,4.3,4.5],
+    rating_Max:4.5,
+    ratingmax_Id:2,
+    price:103,
+    time:"22mins",
+    description:"we serve tasty pizza must try once we serve tasty pizza must try once",
+    id:1,
     })
     newitem.save()
     res.send("dada")
