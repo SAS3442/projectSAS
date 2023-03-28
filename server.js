@@ -119,7 +119,7 @@ app.get("/home", async (req,res)=>{
     const tokenarr= await reqfunction(code); //values are coming for now in terms of array change this to object and change name of the fucntion
     //get users with token
     decoded=jwt_decode(tokenarr[0].toString()); //got the data object of the user
-    console.log(decoded);
+    req.session.userobject=decoded;
     //upsert the token
     const newUser=new User({  //added a new user to the profile database users collection
         username:decoded.name,
@@ -166,7 +166,7 @@ app.get("/homepage",isOauth,async (req,res)=>{
        sendrestros=foundItems
     })
 
-    res.render("home",{nexturl:"/wrongSearch",finallist:final_array,items:senditems,restros:sendrestros,username:decoded.name,picture:decoded.picture})
+    res.render("home",{nexturl:"/wrongSearch",finallist:final_array,items:senditems,restros:sendrestros,username:req.session.userobject.name,picture:req.session.userobject.picture})
 })
 
 
@@ -215,8 +215,11 @@ app.get("/appropriateSearches",isOauth,async (req,res)=>{
     }
 
     final_array=[].concat(items_array,restro_array)
+    if(final_array.length==0){
+        var final_array=[{name:"Explore More"}];
+    }
 
-    res.render("home",{nexturl:"/finalselecteditem",finallist:final_array,items:senditems,restros:sendrestros,username:decoded.name,picture:decoded.picture}) //shoud send found data to homepage
+    res.render("home",{nexturl:"/finalselecteditem",finallist:final_array,items:senditems,restros:sendrestros,username:req.session.userobject.name,picture:req.session.userobject.picture}) //shoud send found data to homepage
 })
 
 app.post("/finalselecteditem",isOauth,(req,res)=>{
