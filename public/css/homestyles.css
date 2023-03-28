@@ -48,13 +48,21 @@ body::-webkit-scrollbar{
 
 .searchtext
 {
-    width: 680px;
-    border-radius: 52px;
+    width: 720px;
+    border-radius: 52px 0px 0px 52px;
     height: 40px;
     background-color: rgb(223, 222, 245);
     padding-top: 5px;
     border: none;
     
+}
+.search-icon
+{
+    border-radius: 0px 52px 52px 0px;
+    height: 46px;
+    background-color: rgb(223, 222, 245);
+    padding-top: 5px;
+    border: none;
 }
 
 .profile
