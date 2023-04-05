@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,68 +8,69 @@
     <title>comparison page</title>
     <link rel="stylesheet" href="css/compstyles.css">
 </head>
+
 <body>
-    
+
     <!-- navbar -->
 
     <div class="navbar">
         <div class="dashboard">..</div>
         <div class="burger">
-            <!-- <i class="fa fa-bars" style="size: 20px;"></i> -->
-            <img src="/home page/images/Burgrer.png" style="height: 30px;" alt="">
+            <img src="css/Burgrer.png" style="height: 30px;" alt="">
         </div>
         <div class="locationimg">
-            <img src="/home page/images/location-56.png" style="height: 27px;" alt="">
-        
-        </div>    
+            <img src="css/location-56.png" style="height: 27px;" alt="">
+
+        </div>
         <div class="location">
             <p>Mysore</p>
         </div>
-        <!-- <div class="searchbarcont">
-            <div class="searchbar">
-                <form action="/" method post>
-                <input type="text" class="searchtext" placeholder="Explore restaurants and dishes">
-                </form>
-            </div>
-        </div> -->
-
-        <div class="searchbar" >
-            <% if(finallist.length==1){ %> 
-            <form style="display: flex" action=<%=nexturl%> method="post">
-                <input type="text" class="searchtext" placeholder=<%=finallist[0].name%> name="avi">
-                <button class="search-icon"><img style="height: 30px;" src="css/search-icon.png" alt=""></button>
-                
-            </form>
-            <% } else{%>
+        <div class="searchbar">
+            <% if(finallist.length==1){ %>
                 <form style="display: flex" action=<%=nexturl%> method="post">
-                    <input type="text" class="searchtext-else" placeholder=<%=finallist[0].name%> name="avi">
-                    <button class="search-icon-else"><img style="height: 30px;" src="css/search-icon.png" alt=""></button>
+                    <input type="text" class="searchtext" placeholder=<%=finallist[0].name%> name="avi">
+                    <button class="search-icon"><img style="height: 30px;" src="css/search-icon.png" alt=""></button>
+
                 </form>
-                <% } %>
+                <% } else{%>
+                    <form style="display: flex" action=<%=nexturl%> method="post">
+                        <input type="text" class="searchtext-else" placeholder=<%=finallist[0].name%> name="avi">
+                        <button class="search-icon-else"><img style="height: 30px;" src="css/search-icon.png"
+                                alt=""></button>
+                    </form>
+                    <% } %>
         </div>
 
         <div class="profile">
-            <div class="profilecontainer">profile</div>
+            <div>
+                <img class="profile-image" src=<%=picture%> alt="not got it">
+            </div>
         </div>
     </div>
     <div class="list-down">
         <% for(i=0;i<finallist.length-1;i++){%>
-            <button type="submit" name="" class="list-items"><%=finallist[i].name%></button>
+            <button type="submit" name="" class="list-items">
+                <%=finallist[i].name%>
+            </button>
             <%}%>
-            <% if(finallist.length!=1){ %> 
-            <button type="submit" name="" class="list-items-last"><%=finallist[finallist.length-1].name%></button>
-            <% } %>
+                <% if(finallist.length!=1){ %>
+                    <button type="submit" name=""
+                        class="list-items-last"><%=finallist[finallist.length-1].name%></button>
+                    <% } %>
     </div>
 
     <!-- itemselected -->
 
     <div class="dishinfo">
-        
-        <div >
+
+        <div>
             <img class="dishimg" src="/paneer-butter-masala-recipe-2.jpg" alt="">
         </div>
-        <div >
-            <p class="dishname" style="font-size: 45px; font-family:'Times New Roman', Times, serif;margin-top: 10px;"><strong><%=list[0].name%></strong></p>
+        <div>
+            <p class="dishname" style="font-size: 45px; font-family:'Times New Roman', Times, serif;margin-top: 10px;">
+                <strong>
+                    <%=list[0].name%>
+                </strong></p>
         </div>
         <!-- <p style="margin-bottom:10px;">Categorize By</p> -->
         <div class="category">
@@ -82,31 +84,43 @@
 
     <div class="comparison">
         <% for(i=0;i<list.length;i++){%>
-        <div class="fullitem">
-    
-            <div class="item-image"><img style=" height: 250px;width: 250px;border-radius: 50px;"
-                    src="/paneer-butter-masala-recipe-2.jpg" alt="item image"></div>
-            <div class="item-service-logo"><img style=" height: 65px;width: 200px;" src="/Swiggy_logo.svg.png"
-                    alt="item service"></div>
-            <div class="item-price">
-                <p style="font-size: 3rem; margin: 0px;"><%=list[i].price%></p>
+            <div class="fullitem">
+
+                <div class="item-image"><img style=" height: 250px;width: 250px;border-radius: 50px;"
+                        src="/paneer-butter-masala-recipe-2.jpg" alt="item image"></div>
+                <div class="item-service-logo"><img style=" height: 65px;width: 200px;" src="/Swiggy_logo.svg.png"
+                        alt="item service"></div>
+                <div class="item-price">
+                    <p style="font-size: 3rem; margin: 0px;">
+                        <%=list[i].price%>
+                    </p>
+                </div>
+                <div class="rest-name">
+                    <p style="font-size: 2.2rem;">
+                        <%=list[i].restraunt%>
+                    </p>
+                </div>
+                <div class="extra-item-info">
+                    <p>
+                        <%=list[i].time%>
+                    </p>
+                    <p>
+                        <%=list[i].rating%>
+                    </p>
+                </div>
+                <div class="rest-item-name">
+                    <p style="padding-left: 41px;font-size: 1.5rem;">J<%=list[i].name%>
+                    </p>
+                </div>
+                <div class="item-description">
+                    <p style="padding-left: 41px;font-size: 1rem;">
+                        <%=list[i].description%>
+                    </p>
+                </div>
             </div>
-            <div class="rest-name">
-                <p style="font-size: 2.2rem;"><%=list[i].restraunt%></p>
-            </div>
-            <div class="extra-item-info">
-                <p><%=list[i].time%></p>
-                <p><%=list[i].rating%></p>
-            </div>
-            <div class="rest-item-name">
-                <p style="padding-left: 41px;font-size: 1.5rem;">J<%=list[i].name%></p>
-            </div>
-            <div class="item-description">
-                <p style="padding-left: 41px;font-size: 1rem;"><%=list[i].description%></p>
-            </div>
-        </div>
-        <%}%>
-    
+            <%}%>
+
     </div>
 </body>
+
 </html>
