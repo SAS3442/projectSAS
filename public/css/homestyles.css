@@ -31,7 +31,7 @@ body::-webkit-scrollbar{
     height: 470px;
     width: 250px;
     top: 85px;
-   
+   display: none;
     border-bottom-right-radius: 45px;
 }
 .burger
@@ -43,6 +43,8 @@ body::-webkit-scrollbar{
     color: rgb(91, 94, 94);
     font-size: 20px;
     align-self: center  ;
+    position: relative;
+    left: 25px;
 }
 
 input
@@ -72,10 +74,80 @@ input
     padding-top: 5px;
     border: none;
 }
+.searchtext-else
+{
+    width: 720px;
+    border-radius: 52px 0px 0px 0px;
+    height: 40px;
+    background-color: rgb(223, 222, 245);
+    padding-top: 5px;
+    border: none;
+    outline: none;
+}
+.search-icon-else
+{
+    border-radius: 0px 52px 0px 0px;
+    height: 46px;
+    background-color: rgb(223, 222, 245);
+    padding-top: 5px;
+    border: none;
+}
+
+.list-down
+{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    z-index: 50;
+    margin-top: -10px;
+}
+
+.list-items{
+    width: 784px;
+    height: 40px;
+    background-color: rgb(223, 222, 245);
+    padding-top: 5px;
+    border: none;
+    outline: none;
+    /* border-radius: 52px; */
+    color: rgb(91, 94, 94);
+    font-size: 20px;
+    align-self: center  ;
+    text-align: left;
+    padding-left: 45px;
+  
+}
+.list-items:hover{
+    width: 784px;
+    height: 45px;
+    background-color: rgb(215, 213, 243);
+  }
+.list-items-last{
+    width: 784px;
+    height: 40px;
+    background-color: rgb(223, 222, 245);
+    padding-top: 5px;
+    border: none;
+    outline: none;
+    border-radius: 0px 0px 52px 52px;
+    color: rgb(91, 94, 94);
+    font-size: 20px;
+    align-self: center  ;
+    text-align: left;
+    padding-left: 45px;
+  
+}
+.list-items-last:hover{
+    width: 784px;
+    height: 45px;
+    background-color: rgb(215, 213, 243);
+  }
 
 .profile
 {
-    /* background-color: blueviolet; */
     position: absolute;
     right: 20px;
     display: flex;

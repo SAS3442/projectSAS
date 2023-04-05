@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,71 +8,100 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/homestyles.css">
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-    
+
 </head>
+
 <body>
     <div class="navbar">
         <div class="dashboard">..</div>
         <div class="burger">
-            <!-- <i class="fa fa-bars" style="size: 20px;"></i> -->
             <img src="css/Burgrer.png" style="height: 30px;" alt="">
         </div>
         <div class="locationimg">
             <img src="css/location-56.png" style="height: 27px;" alt="">
-        
-        </div>    
+
+        </div>
         <div class="location">
             <p>Mysore</p>
         </div>
-            <div class="searchbar" >
+        <div class="searchbar">
+            <% if(finallist.length==1){ %>
                 <form style="display: flex" action=<%=nexturl%> method="post">
-                <input type="text" class="searchtext" placeholder=<%=finallist[0].name%> name="avi">
-                <button class="search-icon"><img style="height: 30px;" src="css/search-icon.png" alt=""></button>
+                    <input type="text" class="searchtext" placeholder=<%=finallist[0].name%> name="avi">
+                    <button class="search-icon"><img style="height: 30px;" src="css/search-icon.png" alt=""></button>
+
                 </form>
+                <% } else{%>
+                    <form style="display: flex" action=<%=nexturl%> method="post">
+                        <input type="text" class="searchtext-else" placeholder=<%=finallist[0].name%> name="avi">
+                        <button class="search-icon-else"><img style="height: 30px;" src="css/search-icon.png"
+                                alt=""></button>
+                    </form>
+                    <% } %>
         </div>
 
         <div class="profile">
-            <div >
+            <div>
                 <img class="profile-image" src=<%=picture%> alt="not got it">
-            </div> 
+            </div>
         </div>
     </div>
 
+    <div class="list-down">
+        <% for(i=0;i<finallist.length-1;i++){%>
+            <button type="submit" name="" class="list-items">
+                <%=finallist[i].name%>
+            </button>
+            <%}%>
+                <% if(finallist.length!=1){ %>
+                    <button type="submit" name=""
+                        class="list-items-last"><%=finallist[finallist.length-1].name%></button>
+                    <% } %>
+    </div>
     <div class="feed">
         <div class="feeds" id="feed1">
-            <img  id="feed1" src="/images/item1.jpg" alt="">
+            <img id="feed1" src="/images/item1.jpg" alt="">
         </div>
         <div class="feeds" id="feed2"></div>
         <div class="feeds" id="feed3"></div>
     </div>
 
     <div class="dishes">
-    
+
         <% for(i=0;i<items.length;i++){%>
-        <div class="dish" >
-          <div class="dishinfo">
-            <img class="dishlogo" src=<%=items[i].rating_max_id%>>
-            <p class="dishrating"><%=items[i].rating_max%><img style="height: 10px;" src="/images/starlogo.png" ></p>
-          </div>
-            <img class="dishimg" src=<%=items[i].picture%> alt="">
-            <p class="dishname"><%=items[i].name%></p>
-        </div>
-        <%}%>
+            <div class="dish">
+                <div class="dishinfo">
+                    <img class="dishlogo" src=<%=items[i].rating_max_id%>>
+                    <p class="dishrating">
+                        <%=items[i].rating_max%><img style="height: 10px;" src="/images/starlogo.png">
+                    </p>
+                </div>
+                <img class="dishimg" src=<%=items[i].picture%> alt="">
+                <p class="dishname">
+                    <%=items[i].name%>
+                </p>
+            </div>
+            <%}%>
     </div>
 
     <div class="restaurants">
-        
+
         <% for(i=0;i<restros.length;i++){%>
-        <div class="restaurant" >
-          <div class="restinfo">
-            <img class="restlogo" src=<%=restros[i].rating_max_id%>>
-            <p class="restrating"><%=restros[i].rating_max%><img style="height: 10px;" src="/images/starlogo.png" ></p>
-          </div>
-            <img class="restimg" src="<%=restros[i].picture%>" alt="">
-            <p class="restname"><%=restros[i].name%></p>
-        </div>
-        <%}%>
+            <div class="restaurant">
+                <div class="restinfo">
+                    <img class="restlogo" src=<%=restros[i].rating_max_id%>>
+                    <p class="restrating">
+                        <%=restros[i].rating_max%><img style="height: 10px;" src="/images/starlogo.png">
+                    </p>
+                </div>
+                <img class="restimg" src="<%=restros[i].picture%>" alt="">
+                <p class="restname">
+                    <%=restros[i].name%>
+                </p>
+            </div>
+            <%}%>
 
     </div>
 </body>
+
 </html>
