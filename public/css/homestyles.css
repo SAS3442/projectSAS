@@ -120,6 +120,11 @@ input
     padding-left: 45px;
   
 }
+.list-items:hover{
+    width: 784px;
+    height: 45px;
+    background-color: rgb(215, 213, 243);
+  }
 .list-items-last{
     width: 784px;
     height: 40px;
@@ -135,6 +140,11 @@ input
     padding-left: 45px;
   
 }
+.list-items-last:hover{
+    width: 784px;
+    height: 45px;
+    background-color: rgb(215, 213, 243);
+  }
 
 .profile
 {
