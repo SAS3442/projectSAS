@@ -246,7 +246,7 @@ app.get("/secondpage",isOauth,async (req,res)=>{
             }
         }return damm}
     
-    res.render("comp",{list:sort()})
+    res.render("comp",{list:sort(),finallist:final_array,nexturl:"/wrongSearch"})
 })
 
 app.listen(3000,()=>{

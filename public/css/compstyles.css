@@ -39,14 +39,14 @@ body{
     position: absolute;
     left: 30px;
 }
-::-webkit-input-placeholder{
+/* ::-webkit-input-placeholder{
     color: rgb(91, 94, 94);
     padding-left: 20px;
     font-size: 20px;
     align-self: center  ;
-}
+} */
 
-.searchtext
+/* .searchtext
 {
     width: 680px;
     border-radius: 52px;
@@ -55,6 +55,103 @@ body{
     padding-top: 5px;
     border: none;
     
+} */
+
+::-webkit-input-placeholder{  /*designing placeholder*/ 
+    color: rgb(91, 94, 94);
+    font-size: 20px;
+    align-self: center  ;
+    position: relative;
+    left: 25px;
+}
+
+input
+{
+    
+    color: rgb(91, 94, 94);
+    padding-left: 20px;
+    font-size: 20px;
+    align-self: center  ;
+}
+
+.searchtext
+{
+    width: 720px;
+    border-radius: 52px 0px 0px 52px;
+    height: 40px;
+    background-color: rgb(223, 222, 245);
+    padding-top: 5px;
+    border: none;
+    outline: none;
+}
+.search-icon
+{
+    border-radius: 0px 52px 52px 0px;
+    height: 46px;
+    background-color: rgb(223, 222, 245);
+    padding-top: 5px;
+    border: none;
+}
+.searchtext-else
+{
+    width: 720px;
+    border-radius: 52px 0px 0px 0px;
+    height: 40px;
+    background-color: rgb(223, 222, 245);
+    padding-top: 5px;
+    border: none;
+    outline: none;
+}
+.search-icon-else
+{
+    border-radius: 0px 52px 0px 0px;
+    height: 46px;
+    background-color: rgb(223, 222, 245);
+    padding-top: 5px;
+    border: none;
+}
+
+.list-down
+{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    z-index: 50;
+    margin-top: -10px;
+}
+
+.list-items{
+    width: 784px;
+    height: 40px;
+    background-color: rgb(223, 222, 245);
+    padding-top: 5px;
+    border: none;
+    outline: none;
+    /* border-radius: 52px; */
+    color: rgb(91, 94, 94);
+    font-size: 20px;
+    align-self: center  ;
+    text-align: left;
+    padding-left: 45px;
+  
+}
+.list-items-last{
+    width: 784px;
+    height: 40px;
+    background-color: rgb(223, 222, 245);
+    padding-top: 5px;
+    border: none;
+    outline: none;
+    border-radius: 0px 0px 52px 52px;
+    color: rgb(91, 94, 94);
+    font-size: 20px;
+    align-self: center  ;
+    text-align: left;
+    padding-left: 45px;
+  
 }
 
 .profile
