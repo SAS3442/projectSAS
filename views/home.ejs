@@ -23,11 +23,19 @@
         <div class="location">
             <p>Mysore</p>
         </div>
-            <div class="searchbar" >
-                <form style="display: flex" action=<%=nexturl%> method="post">
+        <div class="searchbar" >
+            <% if(finallist.length==1){ %> 
+            <form style="display: flex" action=<%=nexturl%> method="post">
                 <input type="text" class="searchtext" placeholder=<%=finallist[0].name%> name="avi">
                 <button class="search-icon"><img style="height: 30px;" src="css/search-icon.png" alt=""></button>
+                
+            </form>
+            <% } else{%>
+                <form style="display: flex" action=<%=nexturl%> method="post">
+                    <input type="text" class="searchtext-else" placeholder=<%=finallist[0].name%> name="avi">
+                    <button class="search-icon-else"><img style="height: 30px;" src="css/search-icon.png" alt=""></button>
                 </form>
+                <% } %>
         </div>
 
         <div class="profile">
@@ -37,6 +45,14 @@
         </div>
     </div>
 
+    <div class="list-down">
+        <% for(i=0;i<finallist.length-1;i++){%>
+            <button type="submit" name="" class="list-items"><%=finallist[i].name%></button>
+            <%}%>
+            <% if(finallist.length!=1){ %> 
+            <button type="submit" name="" class="list-items-last"><%=finallist[finallist.length-1].name%></button>
+            <% } %>
+    </div>
     <div class="feed">
         <div class="feeds" id="feed1">
             <img  id="feed1" src="/images/item1.jpg" alt="">
