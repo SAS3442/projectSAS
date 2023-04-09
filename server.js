@@ -235,10 +235,10 @@ app.get("/appropriateSearches",isOauth,async (req,res)=>{
     final_array=[].concat(items_array,restro_array)
     if(final_array.length==0){
         final_array=[{name:"Didn't work"}];
-        res.render("home",{nexturl:"/appropriateSearches",finallist:final_array,items:senditems,restros:sendrestros,username:req.session.userobject.name,picture:req.session.userobject.picture}) //shoud send found data to homepage
+        res.render("home",{nexturl:"/wrongsearch",finallist:final_array,items:senditems,restros:sendrestros,username:req.session.userobject.name,picture:req.session.userobject.picture}) //shoud send found data to homepage
     }
     console.log(final_array)
-    res.render("home",{nexturl:"/finalselecteditem",finallist:final_array,items:senditems,restros:sendrestros,username:req.session.userobject.name,picture:req.session.userobject.picture}) //shoud send found data to homepage
+    res.render("home",{nexturl:"/wrongsearch",finallist:final_array,items:senditems,restros:sendrestros,username:req.session.userobject.name,picture:req.session.userobject.picture}) //shoud send found data to homepage
 })
 
 app.post("/finalselecteditem",isOauth,(req,res)=>{
