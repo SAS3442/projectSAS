@@ -60,7 +60,7 @@
     </div>
     <div class="feed">
         <div class="feeds" id="feed1">
-            <img id="feed1" src="/images/item1.jpg" alt="">
+            <img id="feed1" src="css/item1.jpg" alt="">
         </div>
         <div class="feeds" id="feed2"></div>
         <div class="feeds" id="feed3"></div>
@@ -71,9 +71,10 @@
         <% for(i=0;i<items.length;i++){%>
             <div class="dish">
                 <div class="dishinfo">
-                    <img class="dishlogo" src=<%=items[i].rating_max_id%>>
+                    <!-- <img class="dishlogo" src=<%=items[i].rating_max_id%>> -->
+                      <img class="restlogo" src="css/swiggy_logo1.png">
                     <p class="dishrating">
-                        <%=items[i].rating_max%><img style="height: 10px;" src="/images/starlogo.png">
+                        <%=items[i].rating_max%><img style="height: 10px;" src="css/starlogo.png">
                     </p>
                 </div>
                 <img class="dishimg" src=<%=items[i].picture%> alt="">
@@ -89,15 +90,18 @@
         <% for(i=0;i<restros.length;i++){%>
             <div class="restaurant">
                 <div class="restinfo">
-                    <img class="restlogo" src=<%=restros[i].rating_max_id%>>
+                    <!-- <img class="restlogo" src=<%=restros[i].rating_max_id%>> -->
+                    <img class="restlogo" src="css/swiggy_logo1.png">
                     <p class="restrating">
-                        <%=restros[i].rating_max%><img style="height: 10px;" src="/images/starlogo.png">
+                        <%=restros[i].rating_max%><img style="height: 10px;" src="css/starlogo.png">
                     </p>
                 </div>
                 <img class="restimg" src="<%=restros[i].picture%>" alt="">
+               <div style="display: flex; justify-content: center; align-items: center;">
                 <p class="restname">
                     <%=restros[i].name%>
                 </p>
+                </div>
             </div>
             <%}%>
 

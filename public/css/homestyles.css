@@ -41,10 +41,10 @@ body::-webkit-scrollbar{
 }
 ::-webkit-input-placeholder{  /*designing placeholder*/ 
     color: rgb(91, 94, 94);
-    font-size: 20px;
+    font-size: 1.2em;
     align-self: center  ;
     position: relative;
-    left: 25px;
+    left: 0px;
 }
 
 input
@@ -258,6 +258,7 @@ justify-content: space-between;
     height: 170px;
     width: 170px;
   margin-top: -10px;
+  border-radius: 30px;
 }
 
 .dishname
@@ -283,6 +284,7 @@ justify-content: space-between;
     justify-content: flex-start;
     overflow: auto;
     cursor: pointer;
+    margin-bottom: 20px;
 }
 .restaurants::-webkit-scrollbar {   /*removed scroll bar*/
     display: none;
@@ -290,13 +292,20 @@ justify-content: space-between;
 
 .restaurant
 {
-    margin-left: 20px;
-margin-right: 20px;
+margin-left: 25px;
+margin-right: 10px;
 display: inline;
 justify-content: center;
-height: 240px;
-width: 180px;
-border-radius: 10%;
+height: 250px;
+width: 215px;
+border-radius: 20px;
+background:rgb(242, 239, 234);
+}
+.restaurant:hover{
+    height: 260px;
+    width: 220px;
+    background:rgb(220, 218, 213);
+    border: 1.5px solid rgb(203, 198, 186);
 }
 
 .restlogo
@@ -323,13 +332,13 @@ justify-content: space-between;
 .restimg
 {
     height: 170px;
-    width: 170px;
+    width: 215px;
   margin-top: -10px;
+  border-radius: 30px;
 }
-
 .restname
 {
-    margin-top: 0px;
+    margin-top: 9px;
     text-align: center;
 }
 body
