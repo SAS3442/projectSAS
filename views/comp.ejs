@@ -7,6 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>comparison page</title>
     <link rel="stylesheet" href="css/compstyles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="css/favicon.ico">
 </head>
 
 <body>
@@ -66,7 +70,7 @@
     <div class="dishinfo">
 
         <div>
-            <img class="dishimg" src="/paneer-butter-masala-recipe-2.jpg" alt="">
+            <img class="dishimg" src=<%= list[0].picture %> alt="">
         </div>
 
             <p class="dishname" style="font-size: 2.5em; font-family:'Times New Roman', Times, serif;margin-top: 25px;margin-bottom: 20px;">
@@ -86,44 +90,47 @@
 
     <div class="comparison">
         <% for(i=0;i<list.length;i++){%>
+            <div style="display: flex; justify-content: center;">
             <div class="fullitem">
 
-                <div class="item-image"><img style=" height: 250px;width: 250px;border-radius: 50px;"
-                        src= <%=list[i].price%> alt="item image"></div>
+                <div class="item-image"><img class="item-img-style" 
+                        src= <%=list[i].picture%> alt="item image"></div>
                 <% if(list[i].rating_max_id==0){ %>
                 <div class="item-service-logo"><img style=" height: 65px;width: 40px;" src="css/Swiggy_logo.svg.png"
                         alt="item service"></div>
                 <% }else{ %>
-                <div class="item-service-logo"><img style=" height: 65px;width: 40px;" src="css/Zomato_logo1.png"
+                <div class="item-service-logo"><img style=" height: 40px;width: 100px;" src="css/Zomato_logo1.png"
                         alt="item service"></div>
                 <% }%>
                 <div class="item-price">
-                    <p style="font-size: 3rem; margin: 0px;">
+                    <p style="font-size: 2.5rem; margin: 0px;">
                         <%=list[i].price%>
                     </p>
                 </div>
                 <div class="rest-name">
-                    <p style="font-size: 2.2rem;">
+                    <p style="font-size: 1.5em;">
                         <%=list[i].restraunt%>
                     </p>
                 </div>
                 <div class="extra-item-info">
-                    <p>
-                        <%=list[i].time%>
+                    <p style="font: 1em;">
+                        <%=list[i].time%> <span> min</span>
                     </p>
                     <p>
                         <%=list[i].rating%>
+                        <img style="height: 10px;" src="css/starlogo.png">
                     </p>
                 </div>
                 <div class="rest-item-name">
-                    <p style="padding-left: 41px;font-size: 1.5rem;">J<%=list[i].name%>
+                    <p style="padding-left: 41px;font-size: 1.2em;">J<%=list[i].name%>
                     </p>
                 </div>
                 <div class="item-description">
-                    <p style="padding-left: 41px;font-size: 1rem;">
+                    <p style="padding-left: 41px;font-size: 1em;">
                         <%=list[i].description%>
                     </p>
                 </div>
+            </div>
             </div>
             <%}%>
 
