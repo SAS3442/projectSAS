@@ -68,18 +68,18 @@
         <div>
             <img class="dishimg" src="/paneer-butter-masala-recipe-2.jpg" alt="">
         </div>
-        <div>
-            <p class="dishname" style="font-size: 45px; font-family:'Times New Roman', Times, serif;margin-top: 10px;">
+
+            <p class="dishname" style="font-size: 2.5em; font-family:'Times New Roman', Times, serif;margin-top: 25px;margin-bottom: 20px;">
                 <strong>
                     <%=list[0].name%>
-                </strong></p>
-        </div>
+                </strong>
+            </p>
         <!-- <p style="margin-bottom:10px;">Categorize By</p> -->
-        <div class="category">
-            <form method="post" action="/rating"><button type="submit" name="category" value="rating" class="button">Rating</button></form>
-            <form method="post" action="/finalselecteditem"><button type="submit" name="category" value="rating" class="button">Price</button></form>
-            <form method="post" action="/distance"><button type="submit" name="category" value="rating" class="button">Distance</button></form>
-        </div>
+    </div>
+    <div class="category">
+        <form method="post" action="/rating"><button type="submit" name="category" value="rating" class="button">Rating</button></form>
+        <form method="post" action="/finalselecteditem"><button type="submit" name="category" value="rating" class="button">Price</button></form>
+        <form method="post" action="/distance"><button type="submit" name="category" value="rating" class="button">Distance</button></form>
     </div>
 
     <!-- comparison -->
