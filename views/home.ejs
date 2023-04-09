@@ -49,13 +49,13 @@
 
     <div class="list-down">
         <% for(i=0;i<finallist.length-1;i++){%>
-            <button type="submit" name="" class="list-items">
+            <button type="submit" name="listdown" class="list-items" value=<%i%>>
                 <%=finallist[i].name%>
             </button>
             <%}%>
                 <% if(finallist.length!=1){ %>
-                    <button type="submit" name=""
-                        class="list-items-last"><%=finallist[finallist.length-1].name%></button>
+                    <button type="submit" name="listdown"
+                        class="list-items-last" value=<%finallist.length-1%>><%=finallist[finallist.length-1].name%></button>
                     <% } %>
     </div>
     <div class="feed">
