@@ -146,9 +146,18 @@ app.get("/homepage",isOauth,async (req,res)=>{
     //     id:1,
     // })
     // await newitem.save()
-    await item.find({rating_max:{$gt:4}})
-    .then((foundItems)=>{
-       senditems=foundItems
+    await item.find({rating_max:{$gt:3.9}})
+    .then(async (foundItems)=>{
+        let found=[];
+        let limit=foundItems.length;
+        for(let i=0;i<10;i++){
+            let k=0+i;
+            for(let j=0;j<=5;j++){
+                found.push(foundItems[k]);
+                k+=10;
+            }
+        }
+       senditems=[...found]
     })
 
     // const newrestro=new restro({           //added a new items to the food database items collection
@@ -167,7 +176,7 @@ app.get("/homepage",isOauth,async (req,res)=>{
        // console.log(foundItems)
        sendrestros=foundItems
     })
-
+    console.log(senditems[0]);
     res.render("home",{nexturl:"/wrongSearch",finallist:final_array,items:senditems,restros:sendrestros,username:req.session.userobject.name,picture:req.session.userobject.picture})
 })
 
