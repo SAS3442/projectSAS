@@ -48,15 +48,17 @@
     </div>
 
     <div class="list-down">
+        <form class="list-down-form" method="post" action="/finalselecteditem">
         <% for(i=0;i<finallist.length-1;i++){%>
-            <button type="submit" name="listdown" class="list-items" value=<%i%>>
+            <button type="submit" name="listdown" class="list-items" value=<%=i%>>
                 <%=finallist[i].name%>
             </button>
             <%}%>
                 <% if(finallist.length!=1){ %>
                     <button type="submit" name="listdown"
-                        class="list-items-last" value=<%finallist.length-1%>><%=finallist[finallist.length-1].name%></button>
+                        class="list-items-last" value=<%=finallist.length-1%>><%=finallist[finallist.length-1].name%></button>
                     <% } %>
+                </form>
     </div>
     <div class="feed">
         <div class="feeds" id="feed1">

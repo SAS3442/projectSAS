@@ -162,7 +162,7 @@ app.get("/homepage",isOauth,async (req,res)=>{
     // })
     // await newrestro.save()
 
-    await restro.find({rating_max:{$gt:4}})
+    await restro.find({rating_max:{$gt:3.5}})
     .then((foundItems)=>{
        // console.log(foundItems)
        sendrestros=foundItems
@@ -182,48 +182,60 @@ app.post("/wrongSearch",isOauth,(req,res)=>{
 app.get("/appropriateSearches",isOauth,async (req,res)=>{
 
     var items_array
-    for(let i=0;i<searched_string.length-2;i++)
-    {
-        var short_word=searched_string.substring(i,i+3)
-        // console.log(short_word)
-        await item.find({name:{$regex:short_word}})
+    // for(let i=0;i<searched_string.length-2;i++)
+    // {
+    //     var short_word=searched_string.substring(i,i+3)
+    //     // console.log(short_word)
+    //     await item.find({name:{$regex:short_word}})
+    //     .then((found)=>{
+    //         //console.log(found)
+    //         items_array=found
+    //     })
+
+    //     if(items_array.length!=0)
+    //     {
+    //         break;
+    //     }
+    // }
+    await item.find({name:{$regex:searched_string, $options: "i"}})
         .then((found)=>{
             //console.log(found)
             items_array=found
         })
-
-        if(items_array.length!=0)
-        {
-            break;
-        }
-    }
-
     var restro_array
-    for(let i=0;i<searched_string.length-2;i++)
-    {
-        var short_word=searched_string.substring(i,i+3)
-        await restro.find({name:{$regex:short_word}})
+    // for(let i=0;i<searched_string.length-2;i++)
+    // {
+    //     var short_word=searched_string.substring(i,i+3)
+    //     await restro.find({name:{$regex:short_word}})
+    //     .then((found)=>{
+    //         //console.log(found)
+    //         restro_array=found
+    //     })
+        
+    //     if(restro_array.length!=0)
+    //     {
+    //         break;
+    //     }
+    // }
+    await restro.find({name:{$regex:searched_string, $options: "i"}})
         .then((found)=>{
             //console.log(found)
             restro_array=found
         })
-        
-        if(restro_array.length!=0)
-        {
-            break;
-        }
-    }
 
     final_array=[].concat(items_array,restro_array)
     if(final_array.length==0){
         final_array=[{name:"Didn't work"}];
         res.render("home",{nexturl:"/appropriateSearches",finallist:final_array,items:senditems,restros:sendrestros,username:req.session.userobject.name,picture:req.session.userobject.picture}) //shoud send found data to homepage
     }
+    console.log(final_array)
     res.render("home",{nexturl:"/finalselecteditem",finallist:final_array,items:senditems,restros:sendrestros,username:req.session.userobject.name,picture:req.session.userobject.picture}) //shoud send found data to homepage
 })
 
 app.post("/finalselecteditem",isOauth,(req,res)=>{
-    index=req.body.listdown;
+    console.log(req.body.listdown);
+    index=parseInt(req.body.listdown);
+    console.log(index);
     if(index==undefined){
         index=0;
     }
