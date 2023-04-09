@@ -73,13 +73,16 @@
         <% for(i=0;i<items.length;i++){%>
             <div class="dish">
                 <div class="dishinfo">
-                    <!-- <img class="dishlogo" src=<%=items[i].rating_max_id%>> -->
+                    <%if(Math.floor(Math.random()*2)%2==0){%>
                       <img class="restlogo" src="css/swiggy_logo1.png">
+                      <% } else{%>
+                        <img class="restlogo" src="css/Zomato_logo1.png">
+                    <%}%>
                     <p class="dishrating">
                         <%=items[i].rating_max%><img style="height: 10px;" src="css/starlogo.png">
                     </p>
                 </div>
-                <img class="dishimg" src=<%=items[i].picture%> alt="">
+                <img class="dishimg" src=<%=items[i].picture%> alt="" >
                 <p class="dishname">
                     <%=items[i].name%>
                 </p>
@@ -92,13 +95,16 @@
         <% for(i=0;i<restros.length;i++){%>
             <div class="restaurant">
                 <div class="restinfo">
-                    <!-- <img class="restlogo" src=<%=restros[i].rating_max_id%>> -->
-                    <img class="restlogo" src="css/swiggy_logo1.png">
+                    <%if(Math.floor(Math.random()*2)%2==0){%>
+                        <img class="restlogo" src="css/swiggy_logo1.png">
+                        <% } else{%>
+                          <img class="restlogo" src="css/Zomato_logo1.png">
+                      <%}%>
                     <p class="restrating">
                         <%=restros[i].rating_max%><img style="height: 10px;" src="css/starlogo.png">
                     </p>
                 </div>
-                <img class="restimg" src="<%=restros[i].picture%>" alt="">
+                <a href=<%=restros[i]._doc.restlink%> ><img class="restimg" src="<%=restros[i].picture%>" alt=""></a>
                <div style="display: flex; justify-content: center; align-items: center;">
                 <p class="restname">
                     <%=restros[i].name%>
