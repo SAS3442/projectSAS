@@ -20,6 +20,7 @@ let final_array=[{name:"Explore More"}];                 //array of best search 
 var decoded;                            //user decoded string object
 var perfectstr;                         //name of the updated matched string item
 let perfectstr_arr=[];                  //array to store matched string item //wherever intializing use let
+let index=0;
 
 const store=new mongodbsession({
     uri:"mongodb+srv://"+process.env.PROFILES_USER+":"+process.env.PROFILES_PASS+"@sas.cgtl0ii.mongodb.net/Profiles",
@@ -222,12 +223,16 @@ app.get("/appropriateSearches",isOauth,async (req,res)=>{
 })
 
 app.post("/finalselecteditem",isOauth,(req,res)=>{
+    index=req.body.listdown;
+    if(index==undefined){
+        index=0;
+    }
     res.redirect("/secondpage")
 })
 
 app.get("/secondpage",isOauth,async (req,res)=>{
     var damm;
-    await item.find({name:{$eq:final_array[0].name}})
+    await item.find({name:{$eq:final_array[index].name}})
     .then((found)=>{
         damm=found;
     })
@@ -238,6 +243,54 @@ app.get("/secondpage",isOauth,async (req,res)=>{
             for(let j=0;j<damm.length-i-1;j++)
             {
                 if(damm[j].price>damm[j+1].price)
+                { 
+                    var temp=damm[j];
+                    damm[j]=damm[j+1];
+                    damm[j+1]=temp;
+                }
+            }
+        }return damm}
+    
+    res.render("comp",{list:sort(),finallist:final_array,nexturl:"/wrongSearch",username:req.session.userobject.name,picture:req.session.userobject.picture})
+})
+
+app.post("/rating",isOauth,async (req,res)=>{
+    var damm;
+    await item.find({name:{$eq:final_array[index].name}})
+    .then((found)=>{
+        damm=found;
+    })
+    damm=JSON.parse(JSON.stringify(damm));    //this converts objent in string format to javascript object
+
+    function sort(){
+        for(let i=0;i<damm.length-1;i++){
+            for(let j=0;j<damm.length-i-1;j++)
+            {
+                if(damm[j].rating_max>damm[j+1].rating_max)
+                { 
+                    var temp=damm[j];
+                    damm[j]=damm[j+1];
+                    damm[j+1]=temp;
+                }
+            }
+        }return damm}
+    
+    res.render("comp",{list:sort(),finallist:final_array,nexturl:"/wrongSearch",username:req.session.userobject.name,picture:req.session.userobject.picture})
+})
+
+app.post("/distance",isOauth,async (req,res)=>{
+    var damm;
+    await item.find({name:{$eq:final_array[index].name}})
+    .then((found)=>{
+        damm=found;
+    })
+    damm=JSON.parse(JSON.stringify(damm));    //this converts objent in string format to javascript object
+
+    function sort(){
+        for(let i=0;i<damm.length-1;i++){
+            for(let j=0;j<damm.length-i-1;j++)
+            {
+                if(damm[j].time>damm[j+1].time)
                 { 
                     var temp=damm[j];
                     damm[j]=damm[j+1];

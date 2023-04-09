@@ -48,15 +48,17 @@
         </div>
     </div>
     <div class="list-down">
+        <form action=<%=nexturl%> method="post">
         <% for(i=0;i<finallist.length-1;i++){%>
-            <button type="submit" name="" class="list-items">
+            <button type="submit" name="listdown" class="list-items" value=<%i%>>
                 <%=finallist[i].name%>
             </button>
             <%}%>
                 <% if(finallist.length!=1){ %>
-                    <button type="submit" name=""
-                        class="list-items-last"><%=finallist[finallist.length-1].name%></button>
+                    <button type="submit" name="listdown"
+                        class="list-items-last" value=<%finallist.length-1%>><%=finallist[finallist.length-1].name%></button>
                     <% } %>
+                </form>
     </div>
 
     <!-- itemselected -->
@@ -74,9 +76,9 @@
         </div>
         <!-- <p style="margin-bottom:10px;">Categorize By</p> -->
         <div class="category">
-            <button type="submit" name="category" value="rating" class="button">Rating</button>
-            <button type="submit" name="category" value="rating" class="button">Price</button>
-            <button type="submit" name="category" value="rating" class="button">Distance</button>
+            <form method="post" action="/rating"><button type="submit" name="category" value="rating" class="button">Rating</button></form>
+            <form method="post" action="/finalselecteditem"><button type="submit" name="category" value="rating" class="button">Price</button></form>
+            <form method="post" action="/distance"><button type="submit" name="category" value="rating" class="button">Distance</button></form>
         </div>
     </div>
 
